@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus AI</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin: 20px;
+    width: calc(100% - 40px);
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #a3ff12;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-link {
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #a3ff12;
+    color: #000000;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #a3ff12 0%, #7ed321 100%);
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(163, 255, 18, 0.3);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(ellipse at center, rgba(163, 255, 18, 0.1) 0%, transparent 70%);
+    position: relative;
+    margin-top: 80px;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 20px;
+}
+
+.title-line {
+    display: block;
+    background: linear-gradient(135deg, #ffffff 0%, #a3ff12 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.hero-cta {
+    background: linear-gradient(135deg, #a3ff12 0%, #7ed321 100%);
+    color: #000000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(163, 255, 18, 0.4);
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-robot {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 40px rgba(163, 255, 18, 0.3));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Features Section */
+.features {
+    padding: 100px 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(163, 255, 18, 0.05) 100%);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #cccccc;
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(163, 255, 18, 0.1);
+    border-color: rgba(163, 255, 18, 0.3);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.feature-card p {
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+/* Quantum Core Section */
+.quantum-core {
+    padding: 100px 0;
+    background: rgba(163, 255, 18, 0.02);
+}
+
+.quantum-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.quantum-image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    filter: drop-shadow(0 0 30px rgba(163, 255, 18, 0.2));
+}
+
+.quantum-text h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.quantum-text p {
+    color: #cccccc;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.quantum-features {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.quantum-features li {
+    color: #a3ff12;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.quantum-features li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #a3ff12;
+}
+
+.explore-btn {
+    background: transparent;
+    color: #a3ff12;
+    border: 2px solid #a3ff12;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.explore-btn:hover {
+    background: #a3ff12;
+    color: #000000;
+}
+
+/* Roadmap Section */
+.roadmap {
+    padding: 100px 0;
+}
+
+.roadmap-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.roadmap-item {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.roadmap-number {
+    background: linear-gradient(135deg, #a3ff12 0%, #7ed321 100%);
+    color: #000000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.roadmap-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.roadmap-content p {
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.roadmap-content ul {
+    list-style: none;
+    color: #cccccc;
+}
+
+.roadmap-content li {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.roadmap-content li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #a3ff12;
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 0;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo {
+    height: 24px;
+    width: 24px;
+    border-radius: 6px;
+}
+
+.footer-text {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #a3ff12;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        margin: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    .header .container {
+        padding: 10px 20px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .quantum-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .roadmap-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="./images/logo.png" alt="Quantum Nexus AI" class="logo">
+                <span class="brand-text">QUANTUM NEXUS</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link">HOME</a>
+                <a href="#" class="nav-link">ABOUT</a>
+                <a href="#" class="nav-link">SERVICES</a>
+                <a href="#" class="nav-link">CONTACT</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                </a>
+                <button class="cta-button">BUY $QUANTUM</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">QUANTUM</span>
+                        <span class="title-line">NEXUS AI</span>
+                    </h1>
+                    <p class="hero-subtitle">Harnessing the Power of Artificial Intelligence</p>
+                    <button class="hero-cta">Get Started</button>
+                </div>
+                <div class="hero-visual">
+                    <img src="./images/image3.png" alt="Quantum Nexus AI Robot" class="hero-robot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Autonomous AI Intelligence</h2>
+            <p class="section-subtitle">Built to watch, reason, and respond. Powered by quantum computing for next-generation applications.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Quantum Scanning</h3>
+                    <p>Advanced quantum algorithms for real-time data analysis and pattern recognition.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Neural Processing</h3>
+                    <p>Deep learning models that adapt and evolve with each interaction.</p>
+                
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Quantum-powered processing delivers results at unprecedented speeds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Core Section -->
+    <section class="quantum-core">
+        <div class="container">
+            <div class="quantum-content">
+                <div class="quantum-diagram">
+                    <img src="./images/image2.png" alt="Quantum Core Architecture" class="quantum-image">
+                </div>
+                <div class="quantum-text">
+                    <h2>Quantum Core Architecture</h2>
+                    <p>Our revolutionary quantum processing core enables unprecedented computational capabilities, powering the next generation of AI applications.</p>
+                    <ul class="quantum-features">
+                        <li>Decentralized Data Streams</li>
+                        <li>Blockchain Integration</li>
+                        <li>Secure AI Models</li>
+                        <li>Adaptive Algorithms</li>
+                        <li>Scalable Computing</li>
+                    </ul>
+                    <button class="explore-btn">Explore Quantum Nexus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap">
+        <div class="container">
+            <h2 class="section-title">Roadmap</h2>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-number">1</div>
+                    <div class="roadmap-content">
+                        <h3>The Foundation</h3>
+                        <p>Building core quantum processing infrastructure and AI models</p>
+                        <ul>
+                            <li>Quantum algorithm development</li>
+                            <li>Neural network optimization</li>
+                            <li>Security protocol implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-number">2</div>
+                    <div class="roadmap-content">
+                        <h3>The Intelligence</h3>
+                        <p>Advanced AI capabilities and machine learning integration</p>
+                        <ul>
+                            <li>Deep learning model deployment</li>
+                            <li>Real-time data processing</li>
+                            <li>Predictive analytics engine</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-number">3</div>
+                    <div class="roadmap-content">
+                        <h3>The Network</h3>
+                        <p>Decentralized ecosystem and global deployment</p>
+                        <ul>
+                            <li>Distributed computing network</li>
+                            <li>API ecosystem development</li>
+                            <li>Community governance tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./images/logo.png" alt="Quantum Nexus AI" class="footer-logo">
+                    <span class="footer-text">QUANTUM NEXUS AI</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
